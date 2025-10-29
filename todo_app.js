@@ -37,16 +37,16 @@ todoList.addEventListener('click', e => {
 // filter funcionality for keyup event
 const filterTodos = (searchQuery) => {
     Array.from(todoList.children)
-        .filter((todo) => !todo.textContent.includes(searchQuery))
+        .filter((todo) => !todo.textContent.toLowerCase().includes(searchQuery))
         .forEach((todo) => todo.classList.add('filtered'));
 
     Array.from(todoList.children)
-        .filter((todo) => todo.textContent.includes(searchQuery))
+        .filter((todo) => todo.textContent.toLowerCase().includes(searchQuery))
         .forEach((todo) => todo.classList.remove('filtered'))
 };
 
 // keyup event for search
 search.addEventListener('keyup', () => {
-    const searchQuery = search.value.trim();
+    const searchQuery = search.value.trim().toLowerCase();
     filterTodos(searchQuery);
 });
